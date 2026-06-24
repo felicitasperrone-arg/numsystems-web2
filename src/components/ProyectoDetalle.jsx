@@ -81,16 +81,30 @@ export function ProyectoDetalle({ proyecto, onClose }) {
           </div>
         </div>
 
-        {/* Sección descripción (placeholder) */}
+        {/* Sección descripción */}
         <div style={{ maxWidth:720 }}>
           <Etiqueta>Descripción</Etiqueta>
           <p style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:400, fontStyle:"italic", fontSize:"clamp(22px,3vw,32px)", lineHeight:1.35, color:P.negro, marginBottom:32 }}>{proyecto.resumen}</p>
-          <p style={{ fontFamily:"'Montserrat',sans-serif", fontWeight:300, fontSize:14, lineHeight:1.9, letterSpacing:".02em", color:P.cuerpo, marginBottom:22 }}>
-            Contenido de descripción de ejemplo. Esta sección presentará el desarrollo completo del proyecto: alcance del trabajo, decisiones técnicas, materiales empleados y etapas de ejecución. Por ahora se utiliza texto de marcador de posición.
-          </p>
-          <p style={{ fontFamily:"'Montserrat',sans-serif", fontWeight:300, fontSize:14, lineHeight:1.9, letterSpacing:".02em", color:P.cuerpo }}>
-            Texto placeholder adicional para ilustrar la extensión típica de esta sección. El contenido real se completará en una etapa posterior, una vez definida la navegación interna del proyecto.
-          </p>
+          {(proyecto.ampliado || []).map((parrafo, i) => (
+            <p key={i} style={{ fontFamily:"'Montserrat',sans-serif", fontWeight:300, fontSize:14, lineHeight:1.9, letterSpacing:".02em", color:P.cuerpo, marginBottom:22 }}>
+              {parrafo}
+            </p>
+          ))}
+
+          {/* Participación profesional */}
+          {proyecto.participacion && proyecto.participacion.length > 0 && (
+            <div style={{ marginTop:46 }}>
+              <Etiqueta>Participación profesional</Etiqueta>
+              <ul style={{ listStyle:"none", padding:0, margin:0 }}>
+                {proyecto.participacion.map((item, i) => (
+                  <li key={i} style={{ display:"flex", gap:12, alignItems:"flex-start", padding:"9px 0", borderBottom:`1px solid ${P.linea}`, fontFamily:"'Montserrat',sans-serif", fontWeight:300, fontSize:13.5, lineHeight:1.6, letterSpacing:".02em", color:P.cuerpo }}>
+                    <span style={{ width:5, height:5, marginTop:8, background:P.terracota, flexShrink:0 }} />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>
