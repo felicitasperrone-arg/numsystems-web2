@@ -91,18 +91,20 @@ export function ProyectoDetalle({ proyecto, onClose }) {
 
         <Divisor margen="0 0 56px" />
 
-        {/* Sección galería de imágenes (automática) */}
+        {/* Sección galería de imágenes (automática, mosaico natural) */}
         <div style={{ marginBottom:80 }}>
           <Etiqueta>Galería</Etiqueta>
-          <div className="g3" style={{ display:"grid", gridTemplateColumns:"repeat(2,1fr)", gap:3 }}>
+          {/* Mosaico tipo collage: cada foto conserva su proporción real.
+              columnWidth hace que la cantidad de columnas se adapte sola al ancho. */}
+          <div style={{ columnWidth:"280px", columnGap:3 }}>
             {fotos.map((src, idx) => (
-              <div key={src + idx} style={{ overflow:"hidden", aspectRatio:"4/3", background:P.fondoSec }}>
+              <div key={src + idx} style={{ breakInside:"avoid", WebkitColumnBreakInside:"avoid", marginBottom:3, overflow:"hidden", background:P.fondoSec }}>
                 <img
                   src={src}
                   alt={`${proyecto.titulo} — imagen ${idx+1}`}
                   loading="lazy"
                   onError={e => { if (proyecto.imgFallback && e.currentTarget.src !== proyecto.imgFallback) e.currentTarget.src = proyecto.imgFallback; }}
-                  style={{ width:"100%", height:"100%", objectFit:"cover", filter:"saturate(.78) brightness(.92)" }}
+                  style={{ width:"100%", height:"auto", display:"block", filter:"saturate(.78) brightness(.92)" }}
                 />
               </div>
             ))}
