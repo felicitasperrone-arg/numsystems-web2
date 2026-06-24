@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { P } from "../theme";
 import { Etiqueta, Divisor } from "./ui";
 import { CATS } from "../data/proyectos";
@@ -16,8 +16,36 @@ export function ProyectoDetalle({ proyecto, onClose }) {
   }, [proyecto, onClose]);
 
   const cat = CATS[proyecto.cat] || { label: proyecto.cat, color: P.dorado };
-  // Galería placeholder por ahora.
-  const galeria = [proyecto.img, proyecto.img, proyecto.img, proyecto.img];
+
+  // ─── Galería automática ───────────────────────────
+  // Busca /{id}-1.jpg … /{id}-9.jpg en la carpeta public y muestra
+  // solo las que existan, ordenadas. Si no hay ninguna numerada,
+  // usa la foto de portada como respaldo. No requiere editar código:
+  // alcanza con subir las fotos bien nombradas.
+  const MAX_FOTOS = 9;
+  const [galeria, setGaleria] = useState([]);
+  useEffect(() => {
+    let cancelado = false;
+    setGaleria([]);
+    const encontradas = [];
+    let pendientes = MAX_FOTOS;
+    const finalizar = () => {
+      if (cancelado) return;
+      encontradas.sort((a, b) => a.n - b.n);
+      setGaleria(encontradas.map(e => e.src));
+    };
+    for (let n = 1; n <= MAX_FOTOS; n++) {
+      const src = `/${proyecto.id}-${n}.jpg`;
+      const im = new Image();
+      im.onload = () => { encontradas.push({ n, src }); if (--pendientes === 0) finalizar(); };
+      im.onerror = () => { if (--pendientes === 0) finalizar(); };
+      im.src = src;
+    }
+    return () => { cancelado = true; };
+  }, [proyecto.id]);
+
+  // Mientras no haya fotos numeradas, mostramos la portada como respaldo.
+  const fotos = galeria.length > 0 ? galeria : [proyecto.img];
 
   return (
     <div
@@ -63,12 +91,12 @@ export function ProyectoDetalle({ proyecto, onClose }) {
 
         <Divisor margen="0 0 56px" />
 
-        {/* Sección galería de imágenes (placeholder) */}
+        {/* Sección galería de imágenes (automática) */}
         <div style={{ marginBottom:80 }}>
           <Etiqueta>Galería</Etiqueta>
           <div className="g3" style={{ display:"grid", gridTemplateColumns:"repeat(2,1fr)", gap:3 }}>
-            {galeria.map((src, idx) => (
-              <div key={idx} style={{ overflow:"hidden", aspectRatio:"4/3", background:P.fondoSec }}>
+            {fotos.map((src, idx) => (
+              <div key={src + idx} style={{ overflow:"hidden", aspectRatio:"4/3", background:P.fondoSec }}>
                 <img
                   src={src}
                   alt={`${proyecto.titulo} — imagen ${idx+1}`}
