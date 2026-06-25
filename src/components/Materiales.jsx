@@ -4,10 +4,10 @@ import { scrollTo } from "../utils";
 
 /* ─── MATERIALES ─────────────────────────────────── */
 const MATS = [
-  { nombre:"Domótica",     origen:"Provisión · Instalación",     desc:"Sistemas inteligentes para automatizar iluminación, climatización, seguridad y control de espacios.",            tag:"Instalaciones",  img:"https://picsum.photos/seed/ns-mat-clt/600/400" },
-  { nombre:"Calefacción",          origen:"Provisión · Instalación",        desc:"Soluciones de calefacción eficientes para viviendas, oficinas e instalaciones industriales.",           tag:"Instalaciones", img:"https://picsum.photos/seed/ns-mat-fibro/600/400" },
-  { nombre:"Estructuras industriales", origen:"Provisión · Montaje",      desc:"Diseño, fabricación y montaje de estructuras metálicas para proyectos industriales y logísticos.",        tag:"Estructuras",      img:"https://picsum.photos/seed/ns-mat-glass/600/400" },
-  { nombre:"Prefabricados de hormigón",    origen:"Provisión · Colocación",         desc:"Elementos premoldeados para obras civiles, industriales y de infraestructura con rápida ejecución.",                                          tag:"Envolvente",    img:"https://picsum.photos/seed/ns-mat-earth/600/400" },
+  { nombre:"Domótica",     origen:"Provisión · Instalación",     desc:"Sistemas inteligentes para automatizar iluminación, climatización, seguridad y control de espacios.",            tag:"Instalaciones",  img:"/domotica.jpg" },
+  { nombre:"Calefacción",          origen:"Provisión · Instalación",        desc:"Soluciones de calefacción eficientes para viviendas, oficinas e instalaciones industriales.",           tag:"Instalaciones", img:"/calefaccion.jpg" },
+  { nombre:"Estructuras industriales", origen:"Provisión · Montaje",      desc:"Diseño, fabricación y montaje de estructuras metálicas para proyectos industriales y logísticos.",        tag:"Estructuras",      img:"/estructura-industrial.jpg" },
+  { nombre:"Prefabricados de hormigón",    origen:"Provisión · Colocación",         desc:"Elementos premoldeados para obras civiles, industriales y de infraestructura con rápida ejecución.",                                          tag:"Envolvente",    img:"/prefabricados.jpg" },
  
 ];
 
