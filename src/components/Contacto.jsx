@@ -7,6 +7,21 @@ export function Contacto() {
   const [form, setForm] = useState({ nombre:"", email:"", mensaje:"" });
   const [enviado, setEnviado] = useState(false);
   const submit = e => { e.preventDefault(); if (form.nombre && form.email && form.mensaje) setEnviado(true); };
+
+  // Datos de contacto reales con sus enlaces
+  const direccion = "Avenida 12 de Octubre 1595, km 40 Panamericana Ramal Pilar, Buenos Aires, Argentina";
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(direccion)}`;
+  const waMensaje = "Hola NUM Systems, quisiera hacer una consulta sobre un proyecto.";
+  const waUrl = `https://wa.me/5491141567985?text=${encodeURIComponent(waMensaje)}`;
+  const datos = [
+    { lab:"Email",     val:"info@numsystems.com",       href:"mailto:info@numsystems.com" },
+    { lab:"WhatsApp",  val:"+54 9 11 4156 7985",        href:waUrl,  externo:true },
+    { lab:"Dirección", val:direccion,                   href:mapsUrl, externo:true },
+    { lab:"Horario",   val:"Lunes a viernes · 09 a 17 hs" },
+  ];
+
+  const valStyle = { fontFamily:"'Montserrat',sans-serif", fontWeight:300, fontSize:13, letterSpacing:".04em", color:"rgba(201,169,110,.65)" };
+
   return (
     <section id="contacto" style={{ background:"#1E1C1A", padding:"130px 64px 110px", position:"relative", overflow:"hidden" }}>
       <div style={{ position:"absolute", top:"50%", right:20, transform:"translateY(-50%)", fontFamily:"'Cormorant Garamond',serif", fontStyle:"italic", fontSize:"clamp(160px,28vw,440px)", fontWeight:300, color:"rgba(201,169,110,.03)", lineHeight:1, userSelect:"none", pointerEvents:"none" }}>N</div>
@@ -17,10 +32,20 @@ export function Contacto() {
       <div className="csplit" style={{ display:"flex", gap:100, alignItems:"flex-start", position:"relative" }}>
         <div className="reveal" style={{ flex:"0 0 300px" }}>
           <p style={{ fontFamily:"'Montserrat',sans-serif", fontWeight:300, fontSize:14, lineHeight:1.85, color:"rgba(201,169,110,.55)", marginBottom:56 }}>Trabajamos con clientes que valoran la precisión, la calidad y una relación de confianza a largo plazo.</p>
-          {[["Email","hola@numsystems.com"],["Teléfono","+54 11 5555-7890"],["Estudio","Puerto Madero, Buenos Aires"],["Horario","Lun–Vie  9:00 — 18:00"]].map(([lab,val]) => (
+          {datos.map(({ lab, val, href, externo }) => (
             <div key={lab} style={{ display:"flex", gap:24, marginBottom:26, alignItems:"baseline" }}>
-              <span style={{ fontFamily:"'Montserrat',sans-serif", fontSize:9, fontWeight:400, letterSpacing:".26em", color:P.terracota, textTransform:"uppercase", minWidth:56 }}>{lab}</span>
-              <span style={{ fontFamily:"'Montserrat',sans-serif", fontWeight:300, fontSize:13, letterSpacing:".04em", color:"rgba(201,169,110,.65)" }}>{val}</span>
+              <span style={{ fontFamily:"'Montserrat',sans-serif", fontSize:9, fontWeight:400, letterSpacing:".26em", color:P.terracota, textTransform:"uppercase", minWidth:56, flexShrink:0 }}>{lab}</span>
+              {href ? (
+                <a
+                  href={href}
+                  {...(externo ? { target:"_blank", rel:"noopener noreferrer" } : {})}
+                  style={{ ...valStyle, textDecoration:"none", cursor:"pointer", transition:"color .25s" }}
+                  onMouseEnter={e => e.currentTarget.style.color = P.tiza}
+                  onMouseLeave={e => e.currentTarget.style.color = "rgba(201,169,110,.65)"}
+                >{val}</a>
+              ) : (
+                <span style={valStyle}>{val}</span>
+              )}
             </div>
           ))}
         </div>
