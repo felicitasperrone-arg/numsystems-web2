@@ -4,12 +4,11 @@ import { scrollTo } from "../utils";
 
 /* ─── MATERIALES ─────────────────────────────────── */
 const MATS = [
-  { nombre:"Domótica",     origen:"Provisión · Instalación",     desc:"Madera laminada cruzada para estructuras sustentables de alto desempeño. Precisión de ingeniería para edificios en altura y grandes luces.",            tag:"Estructural",  img:"https://picsum.photos/seed/ns-mat-clt/600/400" },
-  { nombre:"Calefacción",          origen:"Provisión · Instalación",        desc:"Paneles de revestimiento arquitectónico ultra-delgados con textura mineral precisa. Sin mantenimiento, alta durabilidad y estética refinada.",           tag:"Revestimiento", img:"https://picsum.photos/seed/ns-mat-fibro/600/400" },
-  { nombre:"Estructuras industriales", origen:"Provisión · Montaje",      desc:"Fachadas acristaladas de piso a techo con rotura de puente térmico y aislación acústica para fachadas premium de uso comercial y residencial.",        tag:"Fachadas",      img:"https://picsum.photos/seed/ns-mat-glass/600/400" },
-  { nombre:"Prefabricados de hormigón",    origen:"Provisión · Colocación",         desc:"Sistemas prefabricados de tapial. Masa térmica, pigmentación natural y precisión contemporánea en cada panel.",                                          tag:"Envolvente",    img:"https://picsum.photos/seed/ns-mat-earth/600/400" },
-  { nombre:"Piel de Hormigón Prefabricado", origen:"Países Bajos · Bélgica", desc:"Revestimiento en GRC y GFRC. Geometría de moldería liviana, precisa y de alto desempeño para obras de carácter monumental.",                            tag:"Revestimiento", img:"https://picsum.photos/seed/ns-mat-grc/600/400" },
-  { nombre:"Acero Corten Perforado",         origen:"Suecia · EE.UU.",        desc:"Paneles de acero autopatinable con perforación CNC personalizada. Estructura propia, acabado vivo y pátina natural en el tiempo.",                       tag:"Estructural",   img:"https://picsum.photos/seed/ns-mat-corten/600/400" },
+  { nombre:"Domótica",     origen:"Provisión · Instalación",     desc:"Sistemas inteligentes para automatizar iluminación, climatización, seguridad y control de espacios.",            tag:"Instalaciones",  img:"https://picsum.photos/seed/ns-mat-clt/600/400" },
+  { nombre:"Calefacción",          origen:"Provisión · Instalación",        desc:"Soluciones de calefacción eficientes para viviendas, oficinas e instalaciones industriales.",           tag:"Instalaciones", img:"https://picsum.photos/seed/ns-mat-fibro/600/400" },
+  { nombre:"Estructuras industriales", origen:"Provisión · Montaje",      desc:"Diseño, fabricación y montaje de estructuras metálicas para proyectos industriales y logísticos.",        tag:"Estructuras",      img:"https://picsum.photos/seed/ns-mat-glass/600/400" },
+  { nombre:"Prefabricados de hormigón",    origen:"Provisión · Colocación",         desc:"Elementos premoldeados para obras civiles, industriales y de infraestructura con rápida ejecución.",                                          tag:"Envolvente",    img:"https://picsum.photos/seed/ns-mat-earth/600/400" },
+ 
 ];
 
 export function Materiales() {
