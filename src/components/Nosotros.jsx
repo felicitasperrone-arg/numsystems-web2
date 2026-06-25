@@ -16,6 +16,7 @@ export function Nosotros() {
     { nombre:"Carola Piuzzi",      rol:"Área Técnica · Computación",    esp:"Área técnica y desarrollo de sistemas computacionales." },
     { nombre:"Javier Inzaugarat",  rol:"Área Técnica · Computación",    esp:"Área técnica y desarrollo de sistemas computacionales." },
     { nombre:"Milagros Conde",     rol:"Comercial · Contabilidad",      esp:"Gestión comercial y administración contable." },
+    { nombre:"Tomás Perrone",      rol:"Marketing y Comunicación",      esp:"Marketing, comunicación e identidad de la marca." },
   ];
   return (
     <section id="nosotros" style={{ background:P.tiza, padding:"130px 64px 110px" }}>
